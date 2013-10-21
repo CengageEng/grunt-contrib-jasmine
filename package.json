@@ -27,7 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt-lib-phantomjs": "https://github.com/CengageEng/grunt-lib-phantomjs",
+    "grunt-lib-phantomjs": "git://github.com/CengageEng/grunt-lib-phantomjs",
     "rimraf": "~2.1.4"
   },
   "devDependencies": {
