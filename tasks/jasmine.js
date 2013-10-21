@@ -37,7 +37,6 @@ module.exports = function(grunt) {
       host    : '',
       template : __dirname + '/jasmine/templates/DefaultRunner.tmpl',
       templateOptions : {},
-      phantomjs : {},
       junit: {}
     });
 
@@ -54,7 +53,10 @@ module.exports = function(grunt) {
 
     setup(options);
 
-    jasmine.buildSpecrunner(this.filesSrc,options);
+    // The filter returned no spec, let's skip phantom.
+    if(!jasmine.buildSpecrunner(this.filesSrc, options)) {
+      return removePhantomListeners();
+    }
 
     // If we're just building (e.g. for web), skip phantom.
     if (this.flags.build) return;
@@ -100,8 +102,7 @@ module.exports = function(grunt) {
   }
 
   function teardown(options, cb) {
-    phantomjs.removeAllListeners();
-    phantomjs.listenersAny().length = 0;
+    removePhantomListeners();
 
     if (!options.keepRunner && fs.statSync(options.outfile).isFile()) fs.unlink(options.outfile);
     if (!options.keepRunner) {
@@ -109,6 +110,11 @@ module.exports = function(grunt) {
     } else {
       cb();
     }
+  }
+
+  function removePhantomListeners() {
+    phantomjs.removeAllListeners();
+    phantomjs.listenersAny().length = 0;
   }
 
   function setup(options) {

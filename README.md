@@ -1,4 +1,4 @@
-# grunt-contrib-jasmine [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jasmine.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jasmine)
+# grunt-contrib-jasmine v0.5.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jasmine.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jasmine)
 
 > Run jasmine specs headlessly through PhantomJS.
 
@@ -27,7 +27,7 @@ _Run this task with the `grunt jasmine` command._
 
 Automatically builds and maintains your spec runner and runs your tests headlessly through phantomjs.
 
-Substantial credit goes to [Camille Reynders](http://creynders.be/) (@creynders) for the first decent implementation
+Substantial credit goes to [Camille Reynders](http://www.creynders.be/) (@creynders) for the first decent implementation
 of jasmine through grunt which served as motivation for all the future work.
 
 #### Run specs locally or on an ad hoc server
@@ -168,6 +168,24 @@ watch: {
 }
 ```
 
+### Filtering specs
+
+**filename**
+`grunt jasmine --filter=foo` will run spec files that have `foo` in their file name.
+
+**folder**
+`grunt jasmine --filter=/foo` will run spec files within folders that have `foo*` in their name.
+
+**wildcard**
+`grunt jasmine --filter=/*-bar` will run anything that is located in a folder `*-bar`
+
+**comma separated filters**
+`grunt jasmine --filter=foo,bar` will run spec files that have `foo` or `bar` in their file name.
+
+**flags with space**
+`grunt jasmine --filter="foo bar"` will run spec files that have `foo bar` in their file name.
+`grunt jasmine --filter="/foo bar"` will run spec files within folders that have `foo bar*` in their name.
+
 #### Example application usage
 
 - [Pivotal Labs' sample application](https://github.com/jsoverson/grunt-contrib-jasmine-example)
@@ -237,6 +255,7 @@ for more information on the RequireJS template.
 
 ## Release History
 
+ * 2013-08-02   v0.5.2   Fixed breakage with iframes /44 Added filter flag / 70 Fixed junit failure output /77
  * 2013-06-18   v0.5.1   Merged /69 grunt async not called when tests fail OR keepRunner is true
  * 2013-06-15   v0.5.0   updated rimraf made teardown async, added Function.prototype.bind polyfill breaking (templates) changed input options for getRelativeFileList breaking (usage) failing task on phantom error (SyntaxError, TypeError, et al)
  * 2013-04-03   v0.4.2   bumped grunt-lib-phantomjs to 0.3.0/1.9 (closes merged addressed
@@ -256,4 +275,4 @@ for more information on the RequireJS template.
 
 Task submitted by [Jarrod Overson](http://jarrodoverson.com)
 
-*This file was generated on Mon Aug 12 2013 10:17:43.*
+*This file was generated on Mon Sep 02 2013 11:05:17.*
