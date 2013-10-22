@@ -14,9 +14,7 @@
   };
 
   $(document).ready(function() {
-      setTimeout(function() {
-        jasmineEnv.execute();
-      }, 1 * 1000);
+      jasmineEnv.execute();
   });
 }());
 
