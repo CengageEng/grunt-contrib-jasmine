@@ -13,8 +13,19 @@
     return htmlReporter.specFilter(spec);
   };
 
-  $(document).ready(function() {
+  var currentWindowOnload = window.onload;
+
+  if (document.readyState !== 'complete') {
+    window.onload = function() {
+      if (currentWindowOnload) {
+        currentWindowOnload();
+      }
       jasmineEnv.execute();
-  });
+    };
+  } else {
+    jasmineEnv.execute();
+  }
+
+
 }());
 
