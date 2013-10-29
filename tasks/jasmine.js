@@ -105,11 +105,7 @@ module.exports = function(grunt) {
     removePhantomListeners();
 
     if (!options.keepRunner && fs.statSync(options.outfile).isFile()) fs.unlink(options.outfile);
-    if (!options.keepRunner) {
-      jasmine.cleanTemp(cb);
-    } else {
-      cb();
-    }
+    cb();
   }
 
   function removePhantomListeners() {
