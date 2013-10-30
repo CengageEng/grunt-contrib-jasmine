@@ -10,7 +10,7 @@ exports.init = function(grunt, phantomjs) {
   var rimraf = require('rimraf');
 
   var baseDir = '.',
-      node_module_root = '/' + __dirname.substring(__dirname.indexOf('node_modules'));
+      node_module_root = __dirname.substring(__dirname.indexOf('node_modules'));
 
   var exports = {};
 
